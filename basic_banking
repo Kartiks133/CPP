@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Bank{
+    private:
+    string name;
+    int acc_num;
+    string acc_type;
+    double bal;
+
+    public:
+    Bank(string name,int acc_num,string type, double bal){
+        this->name=name;
+        this->acc_num=acc_num;
+        type=acc_type;
+        if(bal>=0)
+        {
+            this->bal=bal;
+        }
+        else{
+            this->bal=0;
+        }
+
+    }
+
+    void deposit(double amt){
+        if(amt>0){
+            bal=bal+amt;
+            cout<<"Money deposited"<<endl;
+        }
+        else{
+            cout<<"Enter valid amount"<<endl;
+        }
+    }
+
+    void withdrawl(double amt){
+        if(amt<=bal){
+            bal-=amt;
+            cout<<"Withdrawl successful"<<endl;
+        }
+        else{
+            cout<<"Insufficient funds!"<<endl;
+        }
+    }
+
+    void display() const{
+        cout<<"Account Holder: "<<name<<endl;
+        cout<<"Account Number: "<<acc_num<<endl;
+        cout<<"Account Type: "<<acc_type<<endl;
+        cout<<"Current Balance: "<<bal<<endl;
+    }
+};
+int main(){
+    Bank obj("Kartik Shrivastava",8858740886,"Savings",10000.0);
+    obj.display();
+
+    obj.deposit(50000);
+    obj.display();
+
+    obj.withdrawl(30000);
+    obj.display();
+
+    obj.withdrawl(1000);
+
+    return 0;
+}
